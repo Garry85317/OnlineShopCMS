@@ -13,7 +13,7 @@ using OnlineShopCMS.Models;
 
 namespace OnlineShopCMS.Controllers
 {
-    //[Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator")]
     public class ProductsController : Controller
     {
         private readonly OnlineShopContext _context;
