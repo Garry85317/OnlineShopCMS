@@ -1,0 +1,68 @@
+﻿@model OnlineShopCMS.Models.DetailViewModel
+
+@{
+    ViewData["Title"] = @Model.product.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+
+<p>@Html.DisplayFor(model => model.product.Category.Name) -> @Html.DisplayFor(model => model.product.Name)</p>
+
+<div class="row  border-bottom">
+    <div class="col-5 mx-auto">
+        <img src="@Html.DisplayFor(model => model.imgsrc)" class="mx-auto" style="max-height:400px;" />
+    </div>
+
+    <div class="col-7">
+        <div class="row">
+            <div class="col">
+                <p class="alert-light m-0">@Html.DisplayNameFor(model => model.product.Name)</p>
+                <h3>@Html.DisplayFor(model => model.product.Name)</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p class="alert-light m-0">@Html.DisplayNameFor(model => model.product.Description)</p>
+                <pre>@Html.DisplayFor(model => model.product.Description)</pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p>@Html.DisplayNameFor(model => model.product.Price):</p>
+                <h6>NT$ &nbsp; @Html.DisplayFor(model => model.product.Price)</h6>
+            </div>
+            <div class="col">
+                <p>@Html.DisplayNameFor(model => model.product.Stock):</p>
+                <h6>@Html.DisplayFor(model => model.product.Stock)</h6>
+            </div>
+        </div>
+        <p>
+            <a class="text-dark" onclick="ShowMessage()"
+               asp-controller="Cart" asp-action="AddtoCart" asp-route-id="@Model.product.Id" >加入購物車</a>
+        </p>
+    </div>
+</div>
+<div>
+    <div class="tab-pane fade show active" style="padding-top:50px" id="Content">
+        <div class="row">
+            <div class="col">
+                <p class="alert-light m-0">@Html.DisplayNameFor(model => model.product.Content)</p>
+                @Html.Raw(Model.product.Content)
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function ShowMessage() {
+        toastr["success"]("商品已加入購物車！");
+    }
+</script>
+
+<style>
+    .row {
+        padding-bottom: 50px;
+    }
+</style>

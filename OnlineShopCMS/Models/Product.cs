@@ -9,7 +9,7 @@ namespace OnlineShopCMS.Models
     public class Product
     {
         public int Id { get; set; }
-
+        [Required]
         [Display(Name ="商品名稱")]
         public string Name { get; set; }            //商品名稱
 

@@ -9,5 +9,6 @@ namespace OnlineShopCMS.Models
     {
         public Product product { get; set; }
         public string imgsrc { get; set; }
+        public Byte[] Image { get; set; }
     }
 }

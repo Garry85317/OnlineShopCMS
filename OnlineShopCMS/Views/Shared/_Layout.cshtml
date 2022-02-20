@@ -3,30 +3,42 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - OnlineShopCMS</title>
+    <title>@ViewData["Title"] - A Lizie Store</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="icon" type="image/x-icon" href="~/favicon.svg">
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand">OnlineShopCMS</a>
+                <a class="navbar-brand"><img src="~/image/logo.jpg" class="logo"/></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
-
                     <ul class="navbar-nav flex-grow-1">
-
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dashboard">儀錶板</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">公告</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">訂單管理</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Collections" asp-action="Index">最新商品</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Collections/?cId=6">耳環</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Collections/?cId=7">項鍊</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Collections/?cId=8">戒指</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Collections/?cId=9">包包</a>
+                        </li>
+                        <!--
                         <li class="nav-item dropdown">
                             <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">商品管理</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -34,8 +46,8 @@
                             <div class="dropdown-divider"></div>
                                 <a class="dropdown-item text-dark" asp-controller="Products" asp-action="CreateCategory">新增類別</a>
                             </div>
-                        </li>
-                        <!---->
+                        </li>-->
+                        <!--
                         <li class="nav-item dropdown">
                             <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">帳戶管理</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -44,11 +56,16 @@
                                 <a class="dropdown-item text-dark" asp-controller="User" asp-action="ListRole">角色列表</a>
                                 <a class="dropdown-item text-dark" asp-controller="User" asp-action="CreateRole">角色新增</a>
                             </div>
-                        </li>
-
+                        </li>-->
                     </ul>
                 </div>
-
+                <form class="d-flex justify-content-end pl-3">
+                    <button class="btn btn-outline-dark" type="submit" asp-area="" asp-controller="Cart" asp-action="Index">
+                        <i class="fas fa-shopping-cart"></i>
+                        購物車
+                        <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+                    </button>
+                </form>
             </div>
         </nav>
     </header>
@@ -59,14 +76,9 @@
         </main>
     </div>
 
-
-
-
-
-
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - OnlineShopCMS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="container" style="text-align:center;">
+            &copy; 2021 - A Lizie Accessories Select 
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -77,4 +89,10 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+<style>
+    .logo{
+        max-width: 150px;
+    }
+</style>
 
