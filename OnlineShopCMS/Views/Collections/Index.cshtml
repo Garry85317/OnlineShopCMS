@@ -2,11 +2,11 @@
 @{
     ViewData["Title"] = "最新商品";
 }
-@await Component.InvokeAsync("CategoriesList")
 
 <div class="container">
     <div class="row ml-1 justify-content-md-center">
-        @foreach (var item in Model)
+        <a class="nav-link text-dark " asp-area="" asp-controller="Collections" asp-action="New"><img width="1440" height="auto" src="~/image/公告1.jpg"></a>
+        @*@foreach (var item in Model)
         {
             //ViewData["Title"] = @Html.DisplayFor(modelItem => item.product.Category.Name);
             <div class="col col-6 col-md-3 ">
@@ -18,24 +18,23 @@
                         <p class="card-text overflow-text" style="text-align:center">NT$ &nbsp;@Html.DisplayFor(modelItem => item.product.Price)</p>
                     </div>
                     <a class="stretched-link" asp-action="Details" asp-route-id="@item.product.Id"></a>
-                    @*<div class="card-footer btn btn-light" style="position: relative;">
-                        <div class="text-center">
-                        @if (item.product.Stock > 1)
-                        {
-                        <a class="stretched-link text-dark" style="text-decoration: none;" onclick="ShowMessage()"
-                        asp-controller="Cart" asp-action="AddtoCart" asp-route-Id="@item.product.Id">加入購物車</a>
-                        }
-                        else
-                        {
-                        <div class="text-muted">商品缺貨中</div>
-                        }
-                        </div>
-                        </div>*@
                 </div>
             </div>
-        }
+        }*@
     </div>
 </div>
+
+<section id="index_5_blocks" class="index_5_blocks">
+    <div class="container">
+        <div class="section-blocks">
+            <a class="block-1" href=""><img class="img-lazy loaded" data-src="~/image/公告2.jpg" src="~/image/公告2.jpg" data-was-processed="true"></a>
+            <a class="block-2" href=""><img class="img-lazy loaded" data-src="~/image/公告3.jpg" src="~/image/公告3.jpg" data-was-processed="true"></a>
+            <a class="block-3" href=""><img class="img-lazy loaded" data-src="~/image/公告4.jpg" src="~/image/公告4.jpg" data-was-processed="true"></a>
+            <a class="block-4" href=""><img class="img-lazy loaded" data-src="~/image/公告5.jpg" src="~/image/公告5.jpg" data-was-processed="true"></a>
+            <a class="block-5" href=""><img class="img-lazy loaded" data-src="~/image/公告6.jpg" src="~/image/公告6.jpg" data-was-processed="true"></a>
+        </div>
+    </div>
+</section>
 
 <style>
     .row {
@@ -58,5 +57,75 @@
 
     .container {
         max-width: 1140px;
+    }
+
+    .index_5_blocks {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+        .index_5_blocks .section-blocks {
+            display: grid;
+            display: -ms-grid;
+            width: 100%;
+            grid-template-columns: 1fr 20px 1fr 20px 1fr;
+            grid-template-rows: 6fr 15px 3fr;
+            -ms-grid-columns: 1fr 20px 1fr 20px 1fr;
+            -ms-grid-rows: 6fr 15px 3fr;
+        }
+
+            .index_5_blocks .section-blocks img {
+                width: 100%;
+            }
+
+                .index_5_blocks .section-blocks img:hover {
+                    opacity: 0.5;
+                }
+
+            .index_5_blocks .section-blocks .block-1 {
+                display: block;
+                grid-area: 1 / 1;
+                -ms-grid-row: 1;
+                -ms-grid-row-span: 1;
+                -ms-grid-column: 1;
+                -ms-grid-column-span: 1;
+            }
+
+            .index_5_blocks .section-blocks .block-2 {
+                display: block;
+                grid-area: 3 / 1;
+                -ms-grid-row: 3;
+                -ms-grid-row-span: 1;
+                -ms-grid-column: 1;
+                -ms-grid-column-span: 1;
+            }
+
+            .index_5_blocks .section-blocks .block-3 {
+                display: block;
+                grid-area: 1 / 3 / span 3 / span 1;
+                -ms-grid-row: 1;
+                -ms-grid-row-span: 3;
+                -ms-grid-column: 3;
+                -ms-grid-column-span: 1;
+            }
+
+            .index_5_blocks .section-blocks .block-4 {
+                display: block;
+                grid-area: 1 / 5;
+                -ms-grid-row: 1;
+                -ms-grid-row-span: 1;
+                -ms-grid-column: 5;
+                -ms-grid-column-span: 1;
+            }
+
+            .index_5_blocks .section-blocks .block-5 {
+                display: block;
+                grid-area: 3 / 5;
+                -ms-grid-row: 3;
+                -ms-grid-row-span: 1;
+                -ms-grid-column: 5;
+                -ms-grid-column-span: 1;
+            }
+
     }
 </style>

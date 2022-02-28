@@ -12,32 +12,32 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand"><img src="~/image/logo.jpg" class="logo"/></a>
+                <a class="navbar-brand" href="/Collections/Index"><img src="~/image/logo.jpg" class="logo"/></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">公告</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Collections" asp-action="Index">最新商品</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Collections" asp-action="New">最新商品</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Collections/?cId=6">耳環</a>
+                            <a class="nav-link text-dark" href="/Collections/new/?cId=耳環">耳環</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Collections/?cId=7">項鍊</a>
+                            <a class="nav-link text-dark" href="/Collections/new/?cId=項鍊">項鍊</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Collections/?cId=8">戒指</a>
+                            <a class="nav-link text-dark" href="/Collections/new/?cId=戒指">戒指</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Collections/?cId=9">包包</a>
+                            <a class="nav-link text-dark" href="/Collections/new/?cId=包包">包包</a>
                         </li>
+                        <li class="nav-item dropdown">
                         <!--
                         <li class="nav-item dropdown">
                             <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">商品管理</a>
@@ -59,6 +59,7 @@
                         </li>-->
                     </ul>
                 </div>
+                <partial name="_LoginPartial" />
                 <form class="d-flex justify-content-end pl-3">
                     <button class="btn btn-outline-dark" type="submit" asp-area="" asp-controller="Cart" asp-action="Index">
                         <i class="fas fa-shopping-cart"></i>
@@ -81,6 +82,7 @@
             &copy; 2021 - A Lizie Accessories Select 
         </div>
     </footer>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/ckeditor5/build/ckeditor.js"></script>

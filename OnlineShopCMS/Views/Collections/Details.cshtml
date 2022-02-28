@@ -39,7 +39,7 @@
             </div>
         </div>
         <p>
-            <a class="text-dark" onclick="ShowMessage()"
+            <a class="text-dark" onclick='ShowMessage()'
                asp-controller="Cart" asp-action="AddtoCart" asp-route-id="@Model.product.Id" >加入購物車</a>
         </p>
     </div>
@@ -55,9 +55,9 @@
     </div>
 </div>
 
-<script>
+<script type = 'text/javascript'>
     function ShowMessage() {
-        toastr["success"]("商品已加入購物車！");
+        alert("商品已加入購物車！");
     }
 </script>
 

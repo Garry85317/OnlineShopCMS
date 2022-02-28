@@ -1,29 +1,32 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using OnlineShopCMS.Areas.Identity.Data
 
-
 @inject SignInManager<OnlineShopCMSUser> SignInManager
 @inject UserManager<OnlineShopCMSUser> UserManager
 
 <ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
-{
-    <li class="nav-item">
-        <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserAsync(User).Result.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Products", new { area = "" })">
-            <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
-}
-else
-{
-    <li class="nav-item">
-        <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
-}
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item dropdown">
+            <a class="nav-link text-dark " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Hello @UserManager.GetUserAsync(User).Result.Name!</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a id="manage" class="dropdown-item text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">會員中心</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-dark" asp-controller="Order" asp-action="Index">訂單查詢</a>
+                <div class="dropdown-divider"></div>
+                 <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Products", new { area = "" })">
+                <button id="logout" type="submit" class="dropdown-item btn btn-link text-dark">會員登出</button>
+                </form>
+            </div>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
 </ul>

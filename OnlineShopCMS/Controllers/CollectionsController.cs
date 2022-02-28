@@ -22,14 +22,19 @@ namespace OnlineShopCMS.Controllers
             _context = context;
         }
 
-        // GET: Products
-        public async Task<IActionResult> Index(int? cId, string searchString)
+        public IActionResult Index()
         {
-            List<DetailViewModel> dvm = new List<DetailViewModel>();
-            List<Product> products = new List<Product>();
+            return View();
+        }
+
+        // GET: Products
+        public async Task<IActionResult> New(string? cId, string searchString)
+        {
+            List<DetailViewModel> dvm = new();
+            List<Product> products = new();
             if (cId != null)
             {
-                var result = await _context.Category.SingleAsync(x => x.Id.Equals(cId));
+                var result = await _context.Category.SingleAsync(x => x.Name.Equals(cId));
                 products = await _context.Entry(result).Collection(x => x.Products).Query().ToListAsync();
             }
             else
@@ -43,8 +48,8 @@ namespace OnlineShopCMS.Controllers
                 {
                     if (product.Name.Contains(searchString))
                     {
-                        DetailViewModel item = new DetailViewModel
-                        {
+                        DetailViewModel item = new()
+						{
                             product = product,
                             imgsrc = ViewImage(product.Image)
                         };
@@ -58,8 +63,8 @@ namespace OnlineShopCMS.Controllers
 
             foreach (var product in products)
             {
-                DetailViewModel item = new DetailViewModel
-                {
+                DetailViewModel item = new()
+				{
                     product = product,
                     imgsrc = ViewImage(product.Image)
                 };
@@ -73,7 +78,7 @@ namespace OnlineShopCMS.Controllers
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            DetailViewModel dvm = new DetailViewModel();
+            DetailViewModel dvm = new();
 
             if (id == null)
             {
@@ -98,6 +103,11 @@ namespace OnlineShopCMS.Controllers
         private bool ProductExists(int id)
         {
             return _context.Product.Any(e => e.Id == id);
+        }
+
+        public IActionResult About()
+        { 
+            return View();
         }
         
         private string ViewImage(byte[] arrayImage)

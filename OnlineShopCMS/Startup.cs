@@ -9,6 +9,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using OnlineShopCMS.Data;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 namespace OnlineShopCMS
 {
@@ -30,6 +32,9 @@ namespace OnlineShopCMS
 					options.UseSqlServer(Configuration.GetConnectionString("OnlineShopContext")));
 
 			services.AddSession();
+			services.AddSingleton<HtmlEncoder>(
+			HtmlEncoder.Create(allowedRanges: new[] {
+			UnicodeRanges.BasicLatin, UnicodeRanges.CjkUnifiedIdeographs }));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,5 +64,6 @@ namespace OnlineShopCMS
 				endpoints.MapRazorPages();
 			});
 		}
-}
+
+	}
 }
